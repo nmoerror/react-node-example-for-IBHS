@@ -71,7 +71,7 @@ const HeaderSection = styled.div`
   }
 `;
 
-const Welcome = styled.text`
+const Welcome = styled.h3`
   display: inline-block;
   padding: 0;
   margin: 0;

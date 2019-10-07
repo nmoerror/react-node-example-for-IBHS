@@ -32,7 +32,7 @@ const ThisSection = styled.div`
   }
 `;
 
-const Title = styled.text`
+const Title = styled.h3`
   font-size: 1.4rem;
   font-weight: 400;
   color: #666;

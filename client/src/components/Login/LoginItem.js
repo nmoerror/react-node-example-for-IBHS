@@ -67,7 +67,7 @@ const Item = styled.div`
   }
 `;
 
-const TitleSection = styled.text`
+const TitleSection = styled.h3`
   display: flex;
   font-size: 2.8rem;
 `;
