@@ -40,7 +40,9 @@ const Title = styled.h3`
 
 export class Notifications extends Component {
   state = {
-    notifications: ['Alejandro has registered as administrator - 02/10/19']
+    notifications: [
+      'Someone Unknown has registered as administrator - 02/10/19'
+    ]
   };
 
   render() {
