@@ -1,0 +1,112 @@
+.Menu-Title {
+  display: block;
+  font-size: 0.9rem;
+  padding: 0.7rem 0.5rem 0.7rem 0.6rem;
+  font-weight: 400;
+}
+
+.Menu-Title:hover {
+  cursor: default;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.Menu-Button {
+  display: block;
+  padding: 1rem 1rem 1rem 0.7rem;
+  margin: 0;
+  width: 100%;
+  border: none;
+  background: rgba(0, 0, 0, 0);
+  text-align: left;
+  color: rgba(255, 255, 255, 0.4);
+  transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  outline: none;
+  cursor: pointer;
+}
+
+.active {
+  background: white;
+  color: black;
+  border-left: 4px solid rgb(255, 6, 255);
+}
+
+.Menu-Button:hover {
+  border-left: 4px solid rgb(255, 6, 255);
+}
+
+.Sign::after {
+  content: url('../../assets/logos/back2.png');
+  opacity: 0.4;
+  float: right;
+  transform: rotate(-90deg);
+  transition: 0.2s ease-out;
+}
+
+.Sign:hover::after {
+  opacity: 1;
+}
+
+.SignClown::after {
+  content: url('../../assets/logos/back.png');
+  float: right;
+  transform: rotate(-90deg);
+  transition: 0.2s ease-out;
+  opacity: 1;
+}
+
+.Drop-Down-Content {
+  display: none;
+}
+
+.Plus + .Drop-Down-Content {
+  display: block;
+}
+
+.Drop:focus-within .Drop-Down {
+  background: white;
+  cursor: pointer;
+  color: black;
+  border-left: 4px solid rgb(255, 6, 255);
+}
+
+.Drop:focus-within .Drop-Down::after {
+  transform: rotate(-90deg);
+  opacity: 1;
+}
+
+.active-drop {
+  border-left: 4px solid rgb(255, 6, 255);
+}
+
+.Indented {
+  padding-left: 2rem;
+  background: rgba(25, 25, 25, 1);
+  color: white;
+}
+
+.Down {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  padding-bottom: 1rem;
+}
+
+.Logo-Space {
+  display: flex;
+  margin: 0 0 1rem 0;
+  height: 2.4rem;
+  width: 100%;
+  color: white;
+  align-content: center;
+  align-items: center;
+}
+
+.Logo-Space img {
+  height: 100%;
+  margin: 0 1rem 0 1rem;
+}

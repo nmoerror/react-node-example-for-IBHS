@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://ssmsa:needleless@sharpmanagement-u6fxm.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "mscrttkn"
+}
