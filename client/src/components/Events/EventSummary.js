@@ -40,17 +40,21 @@ const EventSummary = ({ getEvents, event: { event, events }, isLoading }) => {
         ) : (
           <tbody>
             {!isLoading &&
-              events.reverse().map((event, idx) => (
-                <tr
-                  className={event.currently ? 'current-event' : ''}
-                  key={idx}
-                >
-                  <td>{event.eventname}</td>
-                  <td>{event.currently ? 'Current' : 'Past'}</td>
-                  <td>{moment(event.eventdate).format('LLL')}</td>
-                  <td>${event.price}</td>
-                </tr>
-              ))}
+              events
+                .sort(function(a, b) {
+                  return new Date(b.date) - new Date(a.date);
+                })
+                .map((event, idx) => (
+                  <tr
+                    className={event.currently ? 'current-event' : ''}
+                    key={idx}
+                  >
+                    <td>{event.eventname}</td>
+                    <td>{event.currently ? 'Current' : 'Past'}</td>
+                    <td>{moment(event.eventdate).format('LLL')}</td>
+                    <td>${event.price}</td>
+                  </tr>
+                ))}
           </tbody>
         )}
       </table>

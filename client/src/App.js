@@ -22,6 +22,7 @@ import GallerySummary from './components/Gallery/GallerySummary';
 import WrapMain from './WrapMain';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
+import PrivateRoute from './components/routing/PrivateRoute';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -38,15 +39,15 @@ const App = () => {
         <Switch>
           <Route path='/' exact component={Login} />
           <WrapMain>
-            <Route path='/Dashboard' exact component={Dashboard} />
-            <Route path='/Users' component={Users} />
-            <Route path='/Event-summary' component={EventSummary} />
-            <Route path='/New-event' component={NewEvent} />
-            <Route path='/Roles' component={Roles} />
-            <Route path='/New-gallery' component={NewGallery} />
-            <Route path='/Manage-gallery' component={ManageGallery} />
-            <Route path='/Gallery-summary' component={GallerySummary} />
-            <Route path='/Settings' component={Settings} />
+            <PrivateRoute path='/Dashboard' exact component={Dashboard} />
+            <PrivateRoute path='/Users' component={Users} />
+            <PrivateRoute path='/Event-summary' component={EventSummary} />
+            <PrivateRoute path='/New-event' component={NewEvent} />
+            <PrivateRoute path='/Roles' component={Roles} />
+            <PrivateRoute path='/New-gallery' component={NewGallery} />
+            <PrivateRoute path='/Manage-gallery' component={ManageGallery} />
+            <PrivateRoute path='/Gallery-summary' component={GallerySummary} />
+            <PrivateRoute path='/Settings' component={Settings} />
           </WrapMain>
         </Switch>
       </Router>
