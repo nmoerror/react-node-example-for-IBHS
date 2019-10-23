@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Chart from 'react-apexcharts';
 import DonutChart from './DonutChart';
@@ -19,10 +19,10 @@ const ThisSection = styled.div`
   }
 `;
 
-export class EventSection extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+const EventSection = ({ months }) => {
+  const [stats, setStats] = useState(null);
+  useEffect(() => {
+    setStats({
       options: {
         chart: {
           foreColor: '#777'
@@ -80,46 +80,48 @@ export class EventSection extends Component {
           data: [10, 0, 0, 25, 15]
         }
       ]
-    };
-  }
+    });
+  }, []);
 
-  render() {
-    return (
-      <ThisSection>
-        <div className='Graphic'>
-          <Chart
-            options={this.state.options}
-            series={this.state.series}
-            type='bar'
-            width='100%'
-          />
-        </div>
-        <div className='Graphic'>
-          <DonutChart />
-        </div>
-        <div className='Graphic'>
-          <Chart
-            options={this.state.options}
-            series={this.state.series}
-            type='area'
-            width='100%'
-          />
-        </div>
-        <div className='Description'>
-          Summary of all Events:
-          <br />
-          <br />
-          Average Event Cap: 124 spots
-          <br />
-          Sold Rate: 60%
-          <br />
-          Attendance Rate: 78%
-          <br />
-          Best Anticipation: 14 days.
-        </div>
-      </ThisSection>
-    );
-  }
-}
+  return (
+    <>
+      {stats && (
+        <ThisSection>
+          <div className='Graphic'>
+            <Chart
+              options={stats.options}
+              series={stats.series}
+              type='bar'
+              width='100%'
+            />
+          </div>
+          <div className='Graphic'>
+            <DonutChart />
+          </div>
+          <div className='Graphic'>
+            <Chart
+              options={stats.options}
+              series={stats.series}
+              type='area'
+              width='100%'
+            />
+          </div>
+          <div className='Description'>
+            Summary of all Events:
+            <br />
+            <br />
+            Average Event Cap: 124 spots
+            <br />
+            Sold Rate: 60%
+            <br />
+            Attendance Rate: 78%
+            <br />
+            Best Anticipation: 14 days.
+          </div>
+        </ThisSection>
+      )}
+    </>
+  );
+};
 
 export default EventSection;

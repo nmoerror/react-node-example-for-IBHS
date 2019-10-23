@@ -107,6 +107,10 @@ textarea {
   display: inline;
 }
 
+input {
+  outline: none;
+}
+
 input[type='text']:focus,
 input[type='password']:focus,
 input[type='number']:focus,
@@ -133,6 +137,14 @@ textarea:focus {
   background: rgb(245, 6, 245, 0.7);
   border: none;
   color: white;
+  padding: 0.21rem 0 !important;
+}
+#login-button-disabled {
+  margin-top: 1.4rem !important;
+  width: 100%;
+  background: rgb(255, 255, 255, 0.7);
+  border: none;
+  color: #333;
   padding: 0.21rem 0 !important;
 }
 

@@ -6,7 +6,8 @@ import {
   AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAILED,
-  LOGOUT
+  LOGOUT,
+  LOADING
 } from './constants';
 
 import setAuthToken from '../utils/setAuthToken';
@@ -60,6 +61,7 @@ export const register = ({
 
 //Login
 export const login = (email, password) => async dispatch => {
+  dispatch(setLoading());
   const config = {
     headers: {
       'Content-Type': 'application/json'
@@ -79,6 +81,12 @@ export const login = (email, password) => async dispatch => {
       type: LOGIN_FAILED
     });
   }
+};
+
+export const setLoading = () => dispatch => {
+  dispatch({
+    type: LOADING
+  });
 };
 
 //Logout

@@ -5,7 +5,7 @@ import SheSharp from '../../assets/logos/SheSharp 2.png';
 import { connect } from 'react-redux';
 import { login } from '../../actions/auth';
 
-const LoginItem = ({ login }) => {
+const LoginItem = ({ login, auth: { isLoading } }) => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -18,6 +18,7 @@ const LoginItem = ({ login }) => {
 
   const onSubmit = e => {
     e.preventDefault();
+
     login(email, password);
   };
 
@@ -48,7 +49,17 @@ const LoginItem = ({ login }) => {
           <input type='checkbox' />
           <label>Remember me</label>
         </div>
-        <input type='submit' id='login-button' value='Sign in' />
+        {console.log(isLoading)}
+        {isLoading ? (
+          <input
+            type='submit'
+            id='login-button-disabled'
+            value='Sign in'
+            disabled={true}
+          />
+        ) : (
+          <input type='submit' id='login-button' value='Sign in' />
+        )}
       </form>
     </Item>
   );
@@ -73,10 +84,15 @@ const TitleSection = styled.h3`
 `;
 
 LoginItem.propTypes = {
-  login: PropTypes.func.isRequired
+  login: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired
 };
 
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
 export default connect(
-  null,
+  mapStateToProps,
   { login }
 )(LoginItem);

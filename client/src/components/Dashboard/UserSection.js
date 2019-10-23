@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Chart from 'react-apexcharts';
 import Notifications from './Notifications';
@@ -16,10 +16,11 @@ const ThisSection = styled.div`
   }
 `;
 
-export class UserSection extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+const UserSection = ({ months, users }) => {
+  const [stats, setStats] = useState(null);
+
+  useEffect(() => {
+    setStats({
       options: {
         chart: {
           foreColor: '#777'
@@ -47,7 +48,13 @@ export class UserSection extends Component {
         },
         colors: ['#3c84ff', '#676cb2', '#eaaf32'],
         xaxis: {
-          categories: ['March', 'April', 'May', 'June', 'July']
+          categories: [
+            `${months[4]}`,
+            `${months[3]}`,
+            `${months[2]}`,
+            `${months[1]}`,
+            `${months[0]}`
+          ]
         }
       },
       fill: {
@@ -63,7 +70,7 @@ export class UserSection extends Component {
       series: [
         {
           name: 'Total Users',
-          data: [0, 0, 0, 4, 8]
+          data: [users / 2, users / 2, users, users, users]
         },
         {
           name: 'New Members',
@@ -74,24 +81,24 @@ export class UserSection extends Component {
           data: [0, 0, 0, 0, 0]
         }
       ]
-    };
-  }
+    });
+  }, [users, months]);
 
-  render() {
-    return (
-      <ThisSection>
-        <div className='UserGraphSection'>
+  return (
+    <ThisSection>
+      <div className='UserGraphSection'>
+        {stats && (
           <Chart
-            options={this.state.options}
-            series={this.state.series}
+            options={stats.options}
+            series={stats.series}
             type='area'
             width='100%'
           />
-        </div>
-        <Notifications />
-      </ThisSection>
-    );
-  }
-}
+        )}
+      </div>
+      <Notifications />
+    </ThisSection>
+  );
+};
 
 export default UserSection;

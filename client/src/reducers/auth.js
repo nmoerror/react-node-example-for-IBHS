@@ -5,7 +5,8 @@ import {
   AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAILED,
-  LOGOUT
+  LOGOUT,
+  LOADING
 } from '../actions/constants';
 
 const initialState = {
@@ -23,8 +24,8 @@ export default function(state = initialState, action) {
       return {
         ...state,
         isAuthenticated: true,
-        isLoading: false,
-        dmin: payload
+        dmin: payload,
+        isLoading: false
       };
 
     case REGISTER_SUCCESS:
@@ -47,6 +48,10 @@ export default function(state = initialState, action) {
         isAuthenticated: false,
         dmin: null,
         isLoading: false
+      };
+    case LOADING:
+      return {
+        isLoading: true
       };
 
     default:
